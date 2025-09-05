@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Attendance System - Rural Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #F3F4F6;
+        }
+        /* Custom styles for toggling attendance buttons */
+        .present-active {
+            background-color: #22c55e !important; /* green-500 */
+            color: white !important;
+            border-color: #16a34a !important; /* green-600 */
+        }
+        .absent-active {
+            background-color: #ef4444 !important; /* red-500 */
+            color: white !important;
+            border-color: #dc2626 !important; /* red-600 */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                         <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" id="home-link" class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="#features" class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                            <a href="#about" class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            <a href="contact.html" class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                   <button id="teacher-login-btn" class="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Teacher Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main id="landing-page-view">
+        <!-- Hero Section -->
+        <header class="hero-bg">
+            <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                    Automated Attendance for Rural Schools
+                </h1>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
+                    Empowering education in remote areas with simple, reliable, and smart attendance tracking.
+                </p>
+                <div class="mt-8">
+                    <button id="get-started-btn" class="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">Get Started</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- How it Works Section -->
+        <section id="how-it-works" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900">How It Works</h2>
+                    <p class="mt-4 text-lg text-gray-600">A simple three-step process to automate attendance.</p>
+                </div>
+                <div class="mt-12 grid gap-10 md:grid-cols-3">
+                    <!-- Step 1 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 mx-auto mb-6">
+                            <span class="text-3xl">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Register Students</h3>
+                        <p class="mt-2 text-gray-600">Easily upload and manage student information in the system.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 mx-auto mb-6">
+                            <span class="text-3xl">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Mark Attendance</h3>
+                        <p class="mt-2 text-gray-600">Teachers can mark attendance with a single click from their dashboard.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="text-center p-8 border border-gray-200 rounded-lg">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 mx-auto mb-6">
+                            <span class="text-3xl">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Generate Reports</h3>
+                        <p class="mt-2 text-gray-600">Instantly generate daily, weekly, or monthly reports for records.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section id="features" class="bg-gray-50 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Everything you need for modern attendance
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        Our system is designed to be simple and effective, even with limited internet connectivity.
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                    </svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Mobile First Design</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Access and manage attendance easily from any mobile device.
+                            </dd>
+                        </div>
+
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8" />
+                                    </svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Offline Capabilities</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Works in low-bandwidth areas and syncs data when connection is available.
+                            </dd>
+                        </div>
+
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Instant SMS Alerts</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Automatically notify parents about their child's absence (optional feature).
+                            </dd>
+                        </div>
+
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                                    </svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Multi-Language Support</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Interface available in local languages for ease of use.
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">About Us</h2>
+                        <p class="mt-4 text-gray-600">
+                            We are a team dedicated to bridging the technology gap in rural education. Our mission is to provide simple, effective, and affordable solutions that empower teachers and improve student outcomes. We believe that every child deserves the opportunity to succeed, and that starts with being present in the classroom.
+                        </p>
+                         <p class="mt-4 text-gray-600">
+                            This automated attendance system is our first step towards creating a comprehensive digital ecosystem for rural schools.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/E9D5FF/4C1D95?text=Rural+School+Students" alt="Happy students" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>&copy; 2025 Automated Attendance System. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Teacher Portal Views -->
+    <div id="teacher-portal-container" class="hidden bg-gray-100 py-12">
+        <div class="w-full max-w-4xl mx-auto p-4">
+
+            <!-- Login Page View -->
+            <div id="login-view" class="bg-white p-8 rounded-xl shadow-lg transition-opacity duration-500">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800">Teacher Portal Login</h1>
+                    <p class="text-gray-500">Please sign in to manage attendance.</p>
+                </div>
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" id="username" name="username" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="user: teacher" required>
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="pass: password123" required>
+                    </div>
+                    <div id="error-message" class="text-red-500 text-sm text-center hidden">Invalid username or password.</div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="hidden bg-white p-8 rounded-xl shadow-lg transition-opacity duration-500">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b">
+                    <div>
+                        <h1 id="welcome-message" class="text-3xl font-bold text-gray-800"></h1>
+                        <p class="text-gray-500 mt-1">Select a section to mark attendance.</p>
+                    </div>
+                    <button id="logout-btn" class="mt-4 sm:mt-0 w-full sm:w-auto px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Logout</button>
+                </div>
+                
+                <!-- Section Selector -->
+                <div class="mb-6">
+                    <label for="section-select" class="block text-sm font-medium text-gray-700 mb-2">Select Section</label>
+                    <select id="section-select" name="section" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+
+                <!-- Attendance List -->
+                <div id="attendance-list-container">
+                     <h2 id="section-header" class="text-xl font-semibold text-gray-700 mb-4"></h2>
+                     <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roll No.</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-tbody" class="bg-white divide-y divide-gray-200">
+                                <!-- Student rows will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                 <!-- Submit Button and Message -->
+                 <div class="mt-8 text-center">
+                    <button id="submit-attendance-btn" class="w-full sm:w-auto px-8 py-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-gray-400">
+                        Submit Attendance
+                    </button>
+                    <p id="success-message" class="text-green-600 mt-4 hidden"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- VIEWS ---
+            const landingPageView = document.getElementById('landing-page-view');
+            const teacherPortalContainer = document.getElementById('teacher-portal-container');
+            const loginView = document.getElementById('login-view');
+            const dashboardView = document.getElementById('dashboard-view');
+            
+            // --- BUTTONS ---
+            const teacherLoginBtn = document.getElementById('teacher-login-btn');
+            const getStartedBtn = document.getElementById('get-started-btn');
+            const homeLink = document.getElementById('home-link');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // --- DOM Elements ---
+            const loginForm = document.getElementById('login-form');
+            const errorMessage = document.getElementById('error-message');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const sectionSelect = document.getElementById('section-select');
+            const attendanceTbody = document.getElementById('attendance-tbody');
+            const sectionHeader = document.getElementById('section-header');
+            const submitAttendanceBtn = document.getElementById('submit-attendance-btn');
+            const successMessage = document.getElementById('success-message');
+
+            // --- Mock Data ---
+            const mockTeacher = {
+                name: "Teacher's Name",
+                username: "teacher",
+                password: "password123"
+            };
+
+            const studentsData = {
+                "Section A": [
+                    { id: "A01", name: "Student 1" },
+                    { id: "A02", name: "Student 2" },
+                    { id: "A03", name: "Student 3" },
+                    { id: "A04", name: "Student 4" },
+                    { id: "A05", name: "Student 5" }
+                ],
+                "Section B": [
+                    { id: "B01", name: "Student 1" },
+                    { id: "B02", name: "Student 2" },
+                    { id: "B03", name: "Student 3" },
+                    { id: "B04", name: "Student 4" },
+                    { id: "B05", name: "Student 5" }
+                ],
+                "Section C": [
+                    { id: "C01", name: "Student 1" },
+                    { id: "C02", name: "Student 2" },
+                    { id: "C03", name: "Student 3" },
+                    { id: "C04", name: "Student 4" },
+                    { id: "C05", name: "Student 5" }
+                ]
+            };
+            
+            let attendanceRecord = {};
+
+            // --- View Switching Functions ---
+            function showLandingPage() {
+                landingPageView.classList.remove('hidden');
+                teacherPortalContainer.classList.add('hidden');
+                loginView.classList.remove('hidden'); // Reset login view
+                dashboardView.classList.add('hidden');
+            }
+
+            function showLoginPortal() {
+                landingPageView.classList.add('hidden');
+                teacherPortalContainer.classList.remove('hidden');
+                loginView.classList.remove('hidden');
+                dashboardView.classList.add('hidden');
+            }
+
+            // --- Portal Functions ---
+            
+            function populateSections() {
+                sectionSelect.innerHTML = '<option value="" disabled selected>Choose a section</option>';
+                Object.keys(studentsData).forEach(section => {
+                    const option = document.createElement('option');
+                    option.value = section;
+                    option.textContent = section;
+                    sectionSelect.appendChild(option);
+                });
+            }
+
+            function renderAttendanceList(section) {
+                attendanceTbody.innerHTML = '';
+                sectionHeader.textContent = `Students in ${section}`;
+                const students = studentsData[section] || [];
+
+                if(students.length === 0){
+                    attendanceTbody.innerHTML = '<tr><td colspan="3" class="text-center py-4 text-gray-500">No students in this section.</td></tr>';
+                    submitAttendanceBtn.disabled = true;
+                    return;
+                }
+                
+                submitAttendanceBtn.disabled = false;
+
+                students.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.dataset.studentId = student.id;
+
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${student.id}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div class="flex items-center justify-center space-x-2">
+                                <button class="attendance-btn present-btn px-3 py-1 text-xs rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50" data-status="Present">Present</button>
+                                <button class="attendance-btn absent-btn px-3 py-1 text-xs rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50" data-status="Absent">Absent</button>
+                            </div>
+                        </td>
+                    `;
+                    attendanceTbody.appendChild(row);
+                });
+            }
+            
+            function updateAttendanceRecord(studentId, status) {
+                 const currentSection = sectionSelect.value;
+                 if (!attendanceRecord[currentSection]) {
+                     attendanceRecord[currentSection] = {};
+                 }
+                 attendanceRecord[currentSection][studentId] = status;
+            }
+
+            // --- Event Listeners ---
+
+            // Navigation
+            teacherLoginBtn.addEventListener('click', showLoginPortal);
+            getStartedBtn.addEventListener('click', showLoginPortal);
+            homeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLandingPage();
+            });
+
+            // Login Logic
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = e.target.username.value;
+                const password = e.target.password.value;
+
+                if (username === mockTeacher.username && password === mockTeacher.password) {
+                    loginView.classList.add('hidden');
+                    dashboardView.classList.remove('hidden');
+
+                    welcomeMessage.textContent = `Welcome, ${mockTeacher.name}`;
+                    populateSections();
+                    errorMessage.classList.add('hidden');
+                } else {
+                    errorMessage.classList.remove('hidden');
+                }
+            });
+            
+            // Logout Logic
+            logoutBtn.addEventListener('click', () => {
+                // Reset state
+                loginForm.reset();
+                sectionSelect.value = "";
+                attendanceTbody.innerHTML = '';
+                sectionHeader.textContent = '';
+                successMessage.classList.add('hidden');
+                attendanceRecord = {};
+
+                // Go back to landing page
+                showLandingPage();
+            });
+            
+            // Dashboard Logic
+            sectionSelect.addEventListener('change', (e) => {
+                const selectedSection = e.target.value;
+                if (selectedSection) {
+                    renderAttendanceList(selectedSection);
+                    successMessage.classList.add('hidden');
+                }
+            });
+            
+            attendanceTbody.addEventListener('click', (e) => {
+                if(e.target.classList.contains('attendance-btn')) {
+                    const button = e.target;
+                    const row = button.closest('tr');
+                    const studentId = row.dataset.studentId;
+                    const status = button.dataset.status;
+
+                    // Update UI
+                    const buttons = row.querySelectorAll('.attendance-btn');
+                    buttons.forEach(btn => {
+                       btn.classList.remove('present-active', 'absent-active');
+                    });
+                    
+                    if(status === 'Present') {
+                        button.classList.add('present-active');
+                    } else {
+                        button.classList.add('absent-active');
+                    }
+                    
+                    // Update data
+                    updateAttendanceRecord(studentId, status);
+                }
+            });
+
+            submitAttendanceBtn.addEventListener('click', () => {
+                const currentSection = sectionSelect.value;
+                const studentsInSection = studentsData[currentSection] || [];
+                const sectionAttendance = attendanceRecord[currentSection] || {};
+                
+                if (currentSection === "") {
+                    alert('Please select a section.');
+                    return;
+                }
+                
+                if(Object.keys(sectionAttendance).length !== studentsInSection.length) {
+                    alert('Please mark attendance for all students before submitting.');
+                    return;
+                }
+
+                // In a real app, you would send this data to a server.
+                console.log(`Submitting attendance for ${currentSection}:`);
+                console.log(sectionAttendance);
+                
+                successMessage.textContent = `Attendance for ${currentSection} submitted successfully!`;
+                successMessage.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 4000);
+            });
+        });
+    </script>
+</body>
+</html>
